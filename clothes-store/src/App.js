@@ -1,39 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
+import './categories.styles.scss';
 
-function App() {
+const App = () => {
+  const categories = [
+    {
+      id: 1,
+      title: 'Hats'
+    },
+    {
+      id: 2,
+      title: 'Jackets'
+    },
+    {
+      id: 3,
+      title: 'Sneakers'
+    },
+    {
+      id: 4,
+      title: 'Men'
+    },
+    {
+      id: 5,
+      title: 'Women'
+    }
+  ]
+
   return (
     <div className="categories-container">
-      <div className="category-container">
-        <div className="category-body">
-          <h2>Hats</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        <div className="category-body">
-          <h2>Jackets</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        <div className="category-body">
-          <h2>Sneakers</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        <div className="category-body">
-          <h2>Women</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
-      <div className="category-container">
-        <div className="category-body">
-          <h2>Men</h2>
-          <p>Shop Now</p>
-        </div>
-      </div>
+      {
+        categories.map(({id,title}) => {
+          return (
+            <div key={id} className="category-container">
+              <div className="category-body">
+                <h2>{title}</h2>
+                <p>Shop Now</p>
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
