@@ -1,0 +1,21 @@
+.navigation {
+  color: aquamarine;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.logo-container {
+  background: red;
+}
+
+.links-container {
+  background: black;
+  display: flex;
+  align-items: center;
+
+  .nav-link{
+    color: white;
+  }
+}
