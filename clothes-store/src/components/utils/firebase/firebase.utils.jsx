@@ -23,7 +23,7 @@ export const singInWithGooglePopUp = () => signInWithPopup(auth, provider);
 
 export const db = getFirestore();
 
-const createUserDoc = async (userAuth) => {
+export const createUserDoc = async (userAuth) => {
 
     const userDoc = doc(db, "users", userAuth.uid);
 
