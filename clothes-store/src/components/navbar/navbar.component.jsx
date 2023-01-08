@@ -10,14 +10,15 @@ const NavBar = () => {
             <div className='navigation'>
                 <div className={'logo-container'}>
                     <Link to={'/'}>
-                        <div>
-                            <CrownLogo/>
-                        </div>
+                        <CrownLogo className={'logo'}/>
                     </Link>
                 </div>
-                <div className='links-container'>
+                <div className='nav-links-container'>
                     <Link className={'nav-link'} to={'/shop'}>
                         Shop
+                    </Link>
+                    <Link className={'nav-link'} to={'/sign-in'}>
+                        Sign-In
                     </Link>
                 </div>
             </div>
