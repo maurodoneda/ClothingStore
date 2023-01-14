@@ -1,12 +1,12 @@
 
 import SignUp from "../sign-up/sign-up.component";
 import SignIn from "../sign-in/sign-in.component";
+import './auth.style.scss';
 
 const Authentication = () => {
 
     return (
-        <div>
-            <h1>Sign-in Page</h1>
+        <div className={'auth-container'}>
             <SignIn/>
             <SignUp/>
         </div>

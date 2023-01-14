@@ -4,7 +4,7 @@ import {
     createUserDoc,
     signInWithGooglePopUp,
     signInAuthUserWithEmailAndPassword
-} from "../utils/firebase/firebase.utils";
+} from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-in.styles.scss'
 import Button from "../button/button";
@@ -32,7 +32,18 @@ export const SignIn = () => {
             console.log(response);
             setFormFields(defaultFormFields);
 
-        } catch (error) {}
+        } catch (error) {
+            switch (error.code){
+                case 'auth/wrong-password':
+                    alert('wrong password');
+                    break;
+                case 'auth/user-not-found':
+                    alert('user not found');
+                break;
+                default:
+                    console.log(error);
+            }
+        }
     }
 
     const logGoogleUser = async () => {
@@ -49,7 +60,7 @@ export const SignIn = () => {
                 <FormInput label='Password' required type={"text"} onChange={handleFormChange} name={"password"} value={password}/>
                 <div className={'buttons-container'}>
                     <Button type={"submit"}>Sign In</Button>
-                    <Button buttonType={'google'} onClick={logGoogleUser}>Google Sign-In</Button>
+                    <Button type={'button'} buttonType={'google'} onClick={logGoogleUser}>Google Sign-In</Button>
                 </div>
             </form>
         </div>
