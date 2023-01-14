@@ -54,7 +54,7 @@ export const SignUp = () => {
                 <FormInput label = 'Email' required type={"text"} onChange={handleFormChange} name={"email"} value={email}/>
                 <FormInput label = 'Password' required type={"text"} onChange={handleFormChange} name={"password"} value={password}/>
                 <FormInput label = 'Confirm Password' required type={"text"} onChange={handleFormChange} name={"confirmPassword"} value={confirmPassword}/>
-                <Button type={"submit"}>Submit</Button>
+                <Button type={"submit"}>Sign Up</Button>
             </form>
         </div>
     )
