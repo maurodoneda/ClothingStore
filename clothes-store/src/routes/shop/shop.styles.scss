@@ -2,6 +2,6 @@
 .products-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  collumn-gap: 30px;
+  column-gap: 30px;
   row-gap: 50px;
 }
