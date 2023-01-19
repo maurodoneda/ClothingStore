@@ -7,7 +7,8 @@ export const CartDropdownContext = createContext(
         },
         cartItems: [],
         addItemToCart: () => {},
-        removeItemFromCart: () => {}
+        removeItemFromCart: () => {},
+        removeItems: () => {}
     }
 )
 
@@ -52,7 +53,20 @@ export const CartDropdownProvider = ({children}) => {
         setCartItems([...newItemList]);
     }
 
-    const value = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, removeItemFromCart};
+    const removeItems = (product) => {
+
+        const exists = cartItems.some(x => x.id === product.id);
+        if (!exists) {
+            console.log('error, item does not exist in the cart')
+            return;
+        }
+
+        const newItemList = cartItems.filter(item => item.id !== product.id);
+
+        setCartItems([...newItemList]);
+    }
+
+    const value = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, removeItemFromCart, removeItems};
     return (
         <CartDropdownContext.Provider value={value}>
             {children}

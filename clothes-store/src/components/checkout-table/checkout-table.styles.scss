@@ -27,11 +27,11 @@ table{
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
 
-      .action-btn:hover{
-        transform: scale(1.2);
-        cursor: pointer;
-      }
+  .action-btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
   }
 }
 

@@ -4,9 +4,10 @@ import './checkout-table.styles.scss'
 import Button from "../button/button";
 import {Link} from "react-router-dom";
 import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
+import {BiTrash} from "react-icons/bi";
 
 const CheckoutTable = () => {
-    const {cartItems, addItemToCart, removeItemFromCart} = useContext(CartDropdownContext);
+    const {cartItems, addItemToCart, removeItemFromCart, removeItems} = useContext(CartDropdownContext);
 
     return (
         <div>
@@ -18,6 +19,7 @@ const CheckoutTable = () => {
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody className={'table-body'}>
@@ -34,6 +36,7 @@ const CheckoutTable = () => {
                         </td>
                         <td className={'product-price'}>{item.price}</td>
                         <td className={'total'}>${item.price * item.quantity}</td>
+                        <td> <BiTrash size={'25'} className={'action-btn'} onClick={() => removeItems(item)}/> </td>
                     </tr>
                 )}
                 </tbody>
