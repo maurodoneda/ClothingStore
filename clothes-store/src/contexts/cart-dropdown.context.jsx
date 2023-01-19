@@ -6,8 +6,8 @@ export const CartDropdownContext = createContext(
         setIsCartOpen: () => {
         },
         cartItems: [],
-        addItemToCart: () => {
-        }
+        addItemToCart: () => {},
+        removeItemFromCart: () => {}
     }
 )
 
@@ -34,7 +34,25 @@ export const CartDropdownProvider = ({children}) => {
         setCartItems([...newItemList]);
     }
 
-    const value = {isCartOpen, setIsCartOpen, cartItems, addItemToCart};
+    const removeItemFromCart = (product) => {
+
+        const exists = cartItems.some(x => x.id === product.id);
+        if (!exists) {
+            setCartItems([...cartItems, {...product, quantity: 0}])
+            return;
+        }
+
+        const newItemList = cartItems.map(item => {
+            if (item.id !== product.id)
+                return item;
+
+            return {...item, quantity: item.quantity !== 0 ? item.quantity - 1 : 0};
+        })
+
+        setCartItems([...newItemList]);
+    }
+
+    const value = {isCartOpen, setIsCartOpen, cartItems, addItemToCart, removeItemFromCart};
     return (
         <CartDropdownContext.Provider value={value}>
             {children}

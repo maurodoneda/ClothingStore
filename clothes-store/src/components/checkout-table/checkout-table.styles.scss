@@ -1,0 +1,42 @@
+
+table{
+  width: 100%;
+
+  th{
+    text-align: left;
+  }
+
+  tr{
+    text-align: left;
+
+      img{
+        width: 150px;
+      }
+    }
+
+  .image-container{
+    width: 180px;
+  }
+
+  .product-name{
+    width: 25%;
+  }
+
+  .product-quantity{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+      .action-btn:hover{
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+  }
+}
+
+.payment-btn{
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 20px;
+}
