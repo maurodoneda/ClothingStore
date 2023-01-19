@@ -38,9 +38,12 @@ const CheckoutTable = () => {
                 )}
                 </tbody>
             </table>
-            <Link to={'/payment'} className={'payment-btn'}>
-                <Button> Go to Payment </Button>
-            </Link>
+            <div className={'payment-container'}>
+                <h2>Total: $ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</h2>
+                <Link to={'/payment'} className={'payment-btn'}>
+                    <Button> Go to Payment </Button>
+                </Link>
+            </div>
         </div>
 
     )
