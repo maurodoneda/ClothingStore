@@ -1,6 +1,18 @@
+.table-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 
 table{
   width: 100%;
+  border-collapse: collapse;
+  border-spacing: 20px;
+
+  thead{
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+  }
 
   th{
     text-align: left;

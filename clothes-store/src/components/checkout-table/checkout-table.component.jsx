@@ -10,12 +10,12 @@ const CheckoutTable = () => {
     const {cartItems, addItemToCart, removeItemFromCart, removeItems} = useContext(CartDropdownContext);
 
     return (
-        <div>
-            <table className={'checkout-table'}>
+        <div className={'table-container'}>
+            <table>
                 <thead>
                     <tr className={'table-header'}>
-                        <th></th>
                         <th>Product</th>
+                        <th>Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
@@ -48,7 +48,6 @@ const CheckoutTable = () => {
                 </Link>
             </div>
         </div>
-
     )
 }
 
