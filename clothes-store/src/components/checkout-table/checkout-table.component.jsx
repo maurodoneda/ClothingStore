@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {CartDropdownContext} from "../../contexts/cart-dropdown.context";
+import {CartContext} from "../../contexts/cart.context";
 import './checkout-table.styles.scss'
 import Button from "../button/button";
 import {Link} from "react-router-dom";
@@ -7,7 +7,7 @@ import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
 import {BiTrash} from "react-icons/bi";
 
 const CheckoutTable = () => {
-    const {cartItems, addItemToCart, removeItemFromCart, removeItems} = useContext(CartDropdownContext);
+    const {cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, removeItems} = useContext(CartContext);
 
     return (
         <div className={'table-container'}>
@@ -42,7 +42,7 @@ const CheckoutTable = () => {
                 </tbody>
             </table>
             <div className={'payment-container'}>
-                <h2>Total: $ {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</h2>
+                <h2>Total: $ {cartTotal.toLocaleString(undefined, {minimumFractionDigits: 2})}</h2>
                 <Link to={'/payment'} className={'payment-btn'}>
                     <Button> Go to Payment </Button>
                 </Link>
