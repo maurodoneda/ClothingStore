@@ -1,7 +1,7 @@
 import {createAction} from "../../utils/reducers/reducers.utils";
 
-export const ACTIONS = {
+export const USER_ACTIONS = {
   SET_USER: "SET_USER"
 }
 
-export const setCurrentUser = (user) => createAction(ACTIONS.SET_USER, user);
+export const setCurrentUser = (user) => createAction(USER_ACTIONS.SET_USER, user);

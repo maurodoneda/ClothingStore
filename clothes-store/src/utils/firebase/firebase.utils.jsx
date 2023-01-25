@@ -63,9 +63,7 @@ export const getCollectionAndDocs = async () => {
 export const createUserDoc = async (userAuth, extraInfo = {}) => {
 
     const userDoc = doc(db, "users", userAuth.uid);
-
     const userDocSnapshot = await getDoc(userDoc);
-    console.log('userSnapshot',userDocSnapshot);
 
     if(!userDocSnapshot.exists()){
         const {displayName, email} = userAuth;
