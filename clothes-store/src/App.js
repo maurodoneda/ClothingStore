@@ -1,10 +1,10 @@
 import './App.css';
-import Home from "./pages/home/home.component";
+import Home from "./pages/home/home.page";
 import {Route, Routes} from "react-router-dom";
 import NavBar from "./components/navbar/navbar.component";
-import Shop from "./pages/shop/shop.component";
+import Shop from "./pages/shop/shop.page";
 import Authentication from "./components/auth/auth.component";
-import Checkout from "./pages/checkout/checkout.component";
+import Checkout from "./pages/checkout/checkout.page";
 import {createUserDoc, onAuthStateChangeListener} from "./utils/firebase/firebase.utils";
 import {useEffect} from "react";
 import {setCurrentUser} from "./store/user/user.actions";
