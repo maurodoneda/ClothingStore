@@ -1,13 +1,14 @@
-import {useContext} from "react";
-import {CartContext} from "../../contexts/cart.context";
 import './checkout-table.styles.scss'
 import Button from "../button/button";
 import {Link} from "react-router-dom";
 import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
 import {BiTrash} from "react-icons/bi";
+import {useSelector} from "react-redux";
+import {selectCart} from "../../store/cart/cart.selectors";
+import {addItemToCart, removeItemFromCart, removeItems} from "../../store/cart/cart.actions";
 
 const CheckoutTable = () => {
-    const {cartItems, cartCount, cartTotal, addItemToCart, removeItemFromCart, removeItems} = useContext(CartContext);
+    const {cartItems, cartTotal} = useSelector(selectCart);
 
     return (
         <div className={'table-container'}>
@@ -29,9 +30,9 @@ const CheckoutTable = () => {
                         <td className={'product-name'}>{item.name}</td>
                         <td>
                             <div className={'product-quantity'}>
-                                <AiOutlineMinus className={'action-btn'} onClick={() => removeItemFromCart(item)}/>
+                                <AiOutlineMinus className={'action-btn'} onClick={() => removeItemFromCart(item, cartItems)}/>
                                 <div>{item.quantity}</div>
-                                <AiOutlinePlus className={'action-btn'} onClick={() => addItemToCart(item)}/>
+                                <AiOutlinePlus className={'action-btn'} onClick={() => addItemToCart(item, cartItems)}/>
                             </div>
                         </td>
                         <td className={'product-price'}>{item.price}</td>
