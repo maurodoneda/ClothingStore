@@ -3,10 +3,10 @@ import Button from "../button/button";
 import CartItem from "../cart-item/cart-item.component";
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {selectCart} from "../../store/cart/cart.selectors";
+import {selectCart, selectCartItems} from "../../store/cart/cart.selectors";
 
 const CartDropdown = () => {
-    const {cartItems} = useSelector(selectCart);
+    const cartItems = useSelector(selectCartItems);
 
     return (
         <div className={'cart-dropdown-container'}>

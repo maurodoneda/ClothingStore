@@ -7,11 +7,11 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import {useSelector} from "react-redux";
 import {selectCurrentUser} from "../../store/user/user.selector";
-import {selectCart} from "../../store/cart/cart.selectors";
+import {selectCart, selectIsCartOpen} from "../../store/cart/cart.selectors";
 
 const NavBar = () => {
     const currentUser = useSelector(selectCurrentUser);
-    const {isCartOpen} = useSelector(selectCart);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     return (
         <Fragment>

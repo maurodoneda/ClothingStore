@@ -7,25 +7,11 @@ export const CART_ACTIONS = {
 
 export const setIsCartOpen = (value) => createAction( CART_ACTIONS.SET_IS_CART_OPEN, value);
 
-
-const updateCartItemsReducer = (newCartItems) => {
-
-  const newCartCount = newCartItems.reduce((total, item) => total + item.quantity, 0);
-  const newCartTotal = newCartItems.reduce((total, item) => total + (item.quantity * item.price), 0);
-
-  createAction(CART_ACTIONS.SET_ITEMS, {
-    cartItems : newCartItems,
-    cartTotal: newCartTotal,
-    cartCount: newCartCount
-  });
-}
-
 export const addItemToCart = (product, cartItems) => {
 
   const exists = cartItems.some(x => x.id === product.id);
   if (!exists) {
-    updateCartItemsReducer([...cartItems, {...product, quantity: 1}]);
-    return;
+    return updateCartItemsReducer([...cartItems, {...product, quantity: 1}]);
   }
 
   const newItemList = cartItems.map(item => {
@@ -35,15 +21,14 @@ export const addItemToCart = (product, cartItems) => {
     return {...item, quantity: item.quantity + 1};
   })
 
-  updateCartItemsReducer( [...newItemList]);
+  return updateCartItemsReducer( [...newItemList]);
 }
 
 export const removeItemFromCart = (product, cartItems) => {
 
   const exists = cartItems.some(x => x.id === product.id);
   if (!exists) {
-    updateCartItemsReducer([...cartItems, {...product, quantity: 0}])
-    return;
+    return updateCartItemsReducer([...cartItems, {...product, quantity: 0}])
   }
 
   const newItemList = cartItems.map(item => {
@@ -53,7 +38,7 @@ export const removeItemFromCart = (product, cartItems) => {
     return {...item, quantity: item.quantity !== 0 ? item.quantity - 1 : 0};
   })
 
-  updateCartItemsReducer([...newItemList]);
+  return updateCartItemsReducer([...newItemList]);
 }
 
 export const removeItems = (product, cartItems) => {
@@ -66,5 +51,10 @@ export const removeItems = (product, cartItems) => {
 
   const newItemList = cartItems.filter(item => item.id !== product.id);
 
-  updateCartItemsReducer([...newItemList]);
+  return updateCartItemsReducer([...newItemList]);
+}
+
+const updateCartItemsReducer = (newCartItems) => {
+  console.log('action', newCartItems);
+  return createAction(CART_ACTIONS.SET_ITEMS, newCartItems);
 }

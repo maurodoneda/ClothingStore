@@ -3,12 +3,14 @@ import Button from "../button/button";
 import {Link} from "react-router-dom";
 import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
 import {BiTrash} from "react-icons/bi";
-import {useSelector} from "react-redux";
-import {selectCart} from "../../store/cart/cart.selectors";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCartItems, selectCartTotal} from "../../store/cart/cart.selectors";
 import {addItemToCart, removeItemFromCart, removeItems} from "../../store/cart/cart.actions";
 
 const CheckoutTable = () => {
-    const {cartItems, cartTotal} = useSelector(selectCart);
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
+    const dispatch = useDispatch();
 
     return (
         <div className={'table-container'}>
@@ -30,14 +32,14 @@ const CheckoutTable = () => {
                         <td className={'product-name'}>{item.name}</td>
                         <td>
                             <div className={'product-quantity'}>
-                                <AiOutlineMinus className={'action-btn'} onClick={() => removeItemFromCart(item, cartItems)}/>
+                                <AiOutlineMinus className={'action-btn'} onClick={() => dispatch(removeItemFromCart(item, cartItems))}/>
                                 <div>{item.quantity}</div>
-                                <AiOutlinePlus className={'action-btn'} onClick={() => addItemToCart(item, cartItems)}/>
+                                <AiOutlinePlus className={'action-btn'} onClick={() => dispatch(addItemToCart(item, cartItems))}/>
                             </div>
                         </td>
                         <td className={'product-price'}>{item.price}</td>
                         <td className={'total'}>${item.price * item.quantity}</td>
-                        <td> <BiTrash size={'25'} className={'action-btn'} onClick={() => removeItems(item)}/> </td>
+                        <td> <BiTrash size={'25'} className={'action-btn'} onClick={() => dispatch(removeItems(item, cartItems))}/> </td>
                     </tr>
                 )}
                 </tbody>
