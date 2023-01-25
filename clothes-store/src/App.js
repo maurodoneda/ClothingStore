@@ -5,10 +5,11 @@ import NavBar from "./components/navbar/navbar.component";
 import Shop from "./routes/shop/shop.component";
 import Authentication from "./components/auth/auth.component";
 import Checkout from "./routes/checkout/checkout.component";
-import {createUserDoc, onAuthStateChangeListener} from "./utils/firebase/firebase.utils";
+import {createUserDoc, getCollectionAndDocs, onAuthStateChangeListener} from "./utils/firebase/firebase.utils";
 import {useEffect} from "react";
 import {setCurrentUser} from "./store/user/user.actions";
 import {useDispatch} from "react-redux";
+import {setCategories} from "./store/categories/categories.actions";
 
 const App = () => {
   const dispatch = useDispatch();
