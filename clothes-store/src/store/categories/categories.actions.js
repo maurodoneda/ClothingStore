@@ -12,17 +12,4 @@ export const fetchCategoriesSucceed = (categories) => createAction(CATEGORIES_AC
 export const fetchCategoriesFailed = (error) => createAction(CATEGORIES_ACTIONS.FETCH_CATEGORIES_FAILED, error);
 
 
-export const fetchCategoriesAsync = () => async (dispatch) => {
-  dispatch(fetchCategoriesStart())
-
-  try{
-    const categories = await getCategories();
-    dispatch(fetchCategoriesSucceed(categories));
-  }
-  catch (error) {
-    dispatch(fetchCategoriesFailed(error))
-  }
-}
-
-
 
