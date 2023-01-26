@@ -15,7 +15,6 @@ const App = () => {
 
   useEffect(() => {
     return onAuthStateChangeListener((user) => {
-      console.log('user', user);
       if(user){
         createUserDoc(user);
       }
