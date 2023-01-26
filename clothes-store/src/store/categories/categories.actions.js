@@ -1,5 +1,4 @@
 import {createAction} from "../../utils/reducers/reducers.utils";
-import {getCategories} from "../../utils/firebase/firebase.utils";
 
 export const CATEGORIES_ACTIONS = {
   FETCH_CATEGORIES_START: "categories/FETCH_CATEGORIES_START",

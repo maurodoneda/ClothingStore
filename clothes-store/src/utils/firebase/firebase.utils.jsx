@@ -53,7 +53,7 @@ export const getCategories = async () => {
     return snapshot.docs.map(x => x.data());
 }
 
-export const createUserDoc = async (userAuth, extraInfo = {}) => {
+export const createUserDocFromAuth = async (userAuth, extraInfo = {}) => {
 
     const userDoc = doc(db, "users", userAuth.uid);
     const userDocSnapshot = await getDoc(userDoc);
@@ -74,7 +74,7 @@ export const createUserDoc = async (userAuth, extraInfo = {}) => {
             console.log('error when creating user', ex.message);
         }
     }
-    return userDoc;
+    return userDocSnapshot;
 }
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -91,4 +91,15 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth);
 
-export const onAuthStateChangeListener = (callback) => onAuthStateChanged(auth, callback)
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+            auth,
+            (userAuth) => {
+                unsubscribe();
+                resolve(userAuth);
+            },
+            reject
+        )
+    })
+}

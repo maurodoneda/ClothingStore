@@ -5,21 +5,14 @@ import NavBar from "./components/navbar/navbar.component";
 import Shop from "./pages/shop/shop.page";
 import Authentication from "./components/auth/auth.component";
 import Checkout from "./pages/checkout/checkout.page";
-import {createUserDoc, onAuthStateChangeListener} from "./utils/firebase/firebase.utils";
 import {useEffect} from "react";
-import {setCurrentUser} from "./store/user/user.actions";
+import {checkUserSession} from "./store/user/user.actions";
 import {useDispatch} from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    return onAuthStateChangeListener((user) => {
-      if(user){
-        createUserDoc(user);
-      }
-      dispatch(setCurrentUser(user));
-    })
+    dispatch(checkUserSession())
   }, []);
 
   return (

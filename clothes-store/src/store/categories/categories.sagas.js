@@ -7,7 +7,7 @@ import {
 import {all, call, put, takeLatest} from 'redux-saga/effects'
 
 
-export function* fetchCategoriesAsync(){
+function* fetchCategoriesAsync(){
   try{
     const categories = yield call(getCategories);
     yield put(fetchCategoriesSucceed(categories));
@@ -17,7 +17,7 @@ export function* fetchCategoriesAsync(){
   }
 }
 
-export function* onFetchCategories(){
+function* onFetchCategories(){
   yield takeLatest(CATEGORIES_ACTIONS.FETCH_CATEGORIES_START, fetchCategoriesAsync)
 }
 
