@@ -17,3 +17,6 @@ export type Item = {
     price: number,
 }
 
+export type CategoryMap = {
+    [key: string] : Item[];
+}

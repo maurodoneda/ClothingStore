@@ -12,7 +12,7 @@ type Category = {
 }
 
 
-const Category = () => {
+const CategoryPage = () => {
     const {category : string} = useParams();
     const categories : Category[] = useSelector<Category[]>(selectCategories);
     const [products, setProducts] = useState([]);
@@ -38,4 +38,4 @@ const Category = () => {
     )
 }
 
-export default Category;
+export default CategoryPage;
